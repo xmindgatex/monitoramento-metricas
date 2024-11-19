@@ -1,10 +1,9 @@
-// angular.json
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "monitoramento-metricas-frontend": {
+      "metrics-monitoring": {
         "projectType": "application",
         "schematics": {},
         "root": "",
@@ -14,7 +13,7 @@
           "build": {
             "builder": "@angular-devkit/build-angular:browser",
             "options": {
-              "outputPath": "dist/monitoramento-metricas-frontend",
+              "outputPath": "dist/metrics-monitoring",
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": "src/polyfills.ts",
@@ -42,12 +41,6 @@
                     "maximumError": "4kb"
                   }
                 ],
-                "fileReplacements": [
-                  {
-                    "replace": "src/environments/environment.ts",
-                    "with": "src/environments/environment.prod.ts"
-                  }
-                ],
                 "outputHashing": "all"
               },
               "development": {
@@ -65,41 +58,15 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "production": {
-                "browserTarget": "monitoramento-metricas-frontend:build:production"
+                "browserTarget": "metrics-monitoring:build:production"
               },
               "development": {
-                "browserTarget": "monitoramento-metricas-frontend:build:development"
+                "browserTarget": "metrics-monitoring:build:development"
               }
             },
             "defaultConfiguration": "development"
-          },
-          "extract-i18n": {
-            "builder": "@angular-devkit/build-angular:extract-i18n",
-            "options": {
-              "browserTarget": "monitoramento-metricas-frontend:build"
-            }
-          },
-          "test": {
-            "builder": "@angular-devkit/build-angular:karma",
-            "options": {
-              "main": "src/test.ts",
-              "polyfills": "src/polyfills.ts",
-              "tsConfig": "tsconfig.spec.json",
-              "karmaConfig": "karma.conf.js",
-              "assets": [
-                "src/favicon.ico",
-                "src/assets"
-              ],
-              "styles": [
-                "src/styles.css"
-              ],
-              "scripts": []
-            }
           }
         }
       }
-    },
-    "cli": {
-      "analytics": false
     }
   }
