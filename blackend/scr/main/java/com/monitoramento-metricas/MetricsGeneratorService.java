@@ -1,30 +1,14 @@
-@Service
-public class MetricsGeneratorService {
-    private static final Random RANDOM = new Random();
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    public Metric generateMetrics() {
-        return new Metric(
-            generateCpuUsage(), 
-            generateMemoryUsage(), 
-            generateLatency()
-        );
-    }
-
-    private int generateCpuUsage() {
-        return RANDOM.nextInt(101);
-    }
-
-    private int generateMemoryUsage() {
-        return RANDOM.nextInt(101);
-    }
-
-    private int generateLatency() {
-        return RANDOM.nextInt(451) + 50;
-    }
-
-    public boolean checkAlerts(Metric metric) {
-        return metric.getCpu() > 80 || 
-               metric.getMemory() > 75 || 
-               metric.getLatency() > 200;
+public class MetricsGeneratorServiceTest {
+    @Test
+    public void testMetricGeneration() {
+        MetricsGeneratorService service = new MetricsGeneratorService();
+        Metric metric = service.generateMetrics();
+        
+        assertTrue(metric.getCpu() >= 0 && metric.getCpu() <= 100);
+        assertTrue(metric.getMemory() >= 0 && metric.getMemory() <= 100);
+        assertTrue(metric.getLatency() >= 50 && metric.getLatency() <= 500);
     }
 }
